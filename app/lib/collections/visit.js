@@ -1,3 +1,5 @@
+import './visitmotive.js';
+
 Visit = new Mongo.Collection('visit');
 
 VisitSchema = new SimpleSchema({
@@ -25,8 +27,33 @@ VisitSchema = new SimpleSchema({
   },
   attendedBy: {
     type: Object,
-    label: "Attended By"
-  }
+    label: "Attended By",
+    optional: true
+  },
+    explanation: {
+    label: "Explain your motives",
+    type: String,
+    optional: true,
+    autoform: {
+			type: "hidden"
+		},
+    custom: function () {
+      var shouldBeRequired = this.field('motive.$.canexplain').value == 1;
+
+      if (shouldBeRequired) {
+        // inserts
+        if (!this.operator) {
+          if (!this.isSet || this.value === null || this.value === "") return "required";
+        }
+        // updates
+        else if (this.isSet) {
+          if (this.operator === "$set" && this.value === null || this.value === "") return "required";
+          if (this.operator === "$unset") return "required";
+          if (this.operator === "$rename") return "required";
+        }
+      }
+    },
+  },
 });
 
 Visit.attachSchema(VisitSchema);

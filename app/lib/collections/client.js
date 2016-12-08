@@ -1,3 +1,6 @@
+import './address.js';
+import './visit.js';
+
 Client = new Mongo.Collection('client');
 
 ClientSchema = new SimpleSchema({
@@ -28,7 +31,7 @@ ClientSchema = new SimpleSchema({
   },
   visits: {
     label: "Visits",
-    type: VisitSchema,
+    type: [VisitSchema],
     optional: true,
   },
   phone: {

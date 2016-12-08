@@ -1,3 +1,5 @@
+import './visit.js';
+
 Queue = new Mongo.Collection('queue');
 
 QueueSchema = new SimpleSchema({
