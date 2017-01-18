@@ -1,0 +1,30 @@
+<template name="ListVisits">
+  <div class="list-visits">
+    <legend>Visits</legend>
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Created At</th>
+        <th>Attended By</th>
+        <th>Attended At</th>
+        <th>Motives</th>
+        <th>Explanation</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each clients}}
+      {{name}}
+        {{#each visits}}
+        <tr>
+          <td>{{createdAt}}</td>
+          <td>{{canexplain}}</td>
+          <td>{{#linkTo route='editVisit'}}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>{{/linkTo}}</td>
+        </tr>
+        {{/each}}
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+</template>

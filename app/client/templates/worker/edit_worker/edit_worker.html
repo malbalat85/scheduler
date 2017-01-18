@@ -1,0 +1,15 @@
+<template name="EditWorker">
+  <div class="edit-worker">
+    <h1>Edit {{profile.firstName}} {{profile.lastName}} [{{profile.email}}]</h1>
+    <!-- {{> quickForm collection="Meteor.users" doc=this id="editWorkerForm" type="update" buttonContent="Update"}}-->
+    {{# autoForm id="updateWorker" collection="Meteor.users" doc=this}}
+      {{> afQuickField name="profile.firstName"}}
+      {{> afQuickField name="profile.lastName"}}
+      {{> afQuickField name="profile.password" label="New Password"}}
+      {{> afFieldInput type='select-checkbox-inline' name='profile.roles'}}
+      <div class="form-group">
+        <button type="submit" id="updateWorkerBtn" class="btn btn-primary">Update</button>
+      </div>
+    {{/autoForm}}
+  </div>
+</template>

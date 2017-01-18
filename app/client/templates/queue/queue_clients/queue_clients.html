@@ -1,0 +1,69 @@
+<template name="QueueClients">
+  <div class="queue-clients">
+    <h1>Queue</h1>
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Arrived time</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each queueClients}}
+        {{> queueClientRow}}
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+  <div class="separator"> </div>
+  <div class="queue-clients-attended">
+    <h1>Clients attended</h1>
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Arrived time</th>
+        <th>Attended By</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each clientsAttended}}
+        {{> queueClientAttendedRow}}
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+</template>
+
+<template name="queueClientRow">
+  <tr class="clientRow">
+    <td>{{name}}</td>
+    <td class="visible-md visible-lg">{{midname}}</td>
+    <td>{{lastname}}</td>
+    <td>{{email}}</td>
+    <td class="visible-md visible-lg">{{arrivedAt}}</td>
+    <td class="visible-md visible-lg">{{attendedBy}}</td>
+    <td class="text-right">
+    </td>
+  </tr>
+</template>
+
+<template name="queueClientAttendedRow">
+  <tr class="clientRow">
+    <td>{{name}}</td>
+    <td class="visible-md visible-lg">{{midname}}</td>
+    <td>{{lastname}}</td>
+    <td>{{email}}</td>
+    <td class="visible-md visible-lg">{{phone}}</td>
+    <td class="text-right">
+      {{#linkTo route='editClient'}}<button class="btn btn-info" aria-hidden="true"><span class="glyphicon glyphicon-edit"></span></button>{{/linkTo}}
+      {{> quickRemoveButton collection="Client" beforeRemove=beforeRemove _id=this._id class="btn btn-danger"}}
+    </td>
+  </tr>
+</template>

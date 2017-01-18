@@ -24,6 +24,8 @@ VisitmotiveController = RouteController.extend({
   // return Posts.findOne({_id: this.params._id});
 
   data: function () {
+    if (this.params._id)
+      return Visitmotive.findOne({'_id': this.params._id});
   },
 
   // You can provide any of the hook options
@@ -54,7 +56,12 @@ VisitmotiveController = RouteController.extend({
   onStop: function () {
   },
   create: function () {
-    this.render('CreateVisitmotive');
-
-  }
+    this.render('CreateVisitMotive');
+  },
+  update: function () {
+    this.render('EditVisitMotive', {});
+  },
+  list: function () {
+    this.render('ListVisitMotive', {});
+  },
 });

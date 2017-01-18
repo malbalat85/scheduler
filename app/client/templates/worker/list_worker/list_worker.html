@@ -1,0 +1,37 @@
+<template name="ListWorker">
+  <div class="list-worker">
+    <h1>Worker list</h1>
+    {{#linkTo route='createWorker'}}<button class="btn btn-success pull-left" aria-hidden="true"><span class="glyphicon glyphicon-plus"></span> Create</button>{{/linkTo}}
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Roles</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each workers}}
+        {{> workerRow}}
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+</template>
+
+<!-- Client rows -->
+<template name="workerRow">
+  <tr class="workerRow">
+    <td>{{profile.firstName}}</td>
+    <td>{{profile.lastName}}</td>
+    <td>{{profile.email}}</td>
+    <td>{{listRoles profile.roles}}</td>
+    <td class="text-right">
+      {{#linkTo route='editWorker'}}<button class="btn btn-info" aria-hidden="true"><span class="glyphicon glyphicon-edit"></span></button>{{/linkTo}}
+      <button name="activate" value="{{this._id}}" class="btn btn-{{#if verified}}success{{else}}danger{{/if}}" aria-hidden="true"><span class="glyphicon glyphicon-check"></span></button>
+      {{> quickRemoveButton collection="Meteor.users" beforeRemove=beforeRemove _id=this._id class="btn btn-danger"}}
+    </td>
+  </tr>
+</template>

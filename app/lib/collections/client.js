@@ -24,6 +24,12 @@ ClientSchema = new SimpleSchema({
     type: String,
     label: "Email",
     regEx: SimpleSchema.RegEx.Email,
+    unique: true,
+  },
+  phone: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Phone,
+    label: "Phone",
   },
   address: {
     label: "Address",
@@ -31,13 +37,20 @@ ClientSchema = new SimpleSchema({
   },
   visits: {
     label: "Visits",
-    type: [VisitSchema],
+    type: [String],
+    blackbox: true,
     optional: true,
   },
-  phone: {
-    type: String,
-    regEx: SimpleSchema.RegEx.Phone,
-  }
+  createdAt: {
+    label: "Created at",
+    type: Date,
+    autoValue: function(){
+      if(this.isInsert)
+        return new Date();
+    },
+    //denyInsert: true,
+    optional: true
+  },
 });
 
 Client.attachSchema(ClientSchema);
@@ -45,20 +58,6 @@ Client.attachSchema(ClientSchema);
 if (Meteor.isServer) {
   Client.allow({
     insert: function (userId, doc) {
-      return false;
-    },
-
-    update: function (userId, doc, fieldNames, modifier) {
-      return false;
-    },
-
-    remove: function (userId, doc) {
-      return false;
-    }
-  });
-
-  Client.deny({
-    insert: function (userId, doc) {
       return true;
     },
 
@@ -70,4 +69,5 @@ if (Meteor.isServer) {
       return true;
     }
   });
-}
+
+};

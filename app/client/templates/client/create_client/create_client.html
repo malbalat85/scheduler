@@ -1,0 +1,8 @@
+<template name="CreateClient">
+  <div class="create-client">
+    <h1>Create New Client</h1>
+    {{> quickForm collection="Client" id="createClientForm"
+    type="insert" buttonContent="Create"
+    fields="name,midname,lastname,email,phone,address" }}
+  </div>
+</template>

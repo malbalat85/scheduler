@@ -1,0 +1,52 @@
+/*****************************************************************************/
+/* LoginWorker: Style */
+/*****************************************************************************/
+.login-worker {
+}
+
+.wrapper{
+    margin-top: 45px;
+}
+.form-signin{
+  max-width: 420px;
+  padding: 30px 38px 66px;
+  margin: 0 auto;
+  border: 1px solid #2f1919;
+}
+
+.form-signin-heading img {
+  height: 125px;
+  width: 125px;
+}
+
+.form-signin h4 {
+  text-align: center;
+}
+
+.input-group{
+    height: 45px;
+    margin-bottom: 15px;
+    border-radius: 0px;
+    color: #525252;
+}
+.form-control{
+    height: 45px;
+    color: #60B99A;
+}
+.input-group:hover span i{
+    color: #525252;
+}
+.btn-block{
+    border-radius: 0px;
+    margin-top: 25px;
+    background-color: #000000;
+    border: none;
+}
+.btn-block:hover{
+    background-color: #3791ee;
+}
+.bol{
+    position: relative;
+    margin-top: -40px;
+    color: #60B99A;
+}

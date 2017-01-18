@@ -22,3 +22,23 @@ iron:router
 aldeed:autoform
 aldeed:collection2
 twbs:bootstrap
+aldeed:delete-button
+fourseven:scss
+
+# added by tutorial
+# kadira:flow-router
+kadira:blaze-layout
+erasaur:meteor-lodash
+stolinski:stylus-multi
+fortawesome:fontawesome
+spiderable
+fastclick
+raix:handlebar-helpers
+accounts-ui
+accounts-password
+matb33:bootstrap-glyphicons
+msavin:jetsetter
+zimme:active-route
+gwendall:auth-client-callbacks
+momentjs:moment
+meteortoys:allthings

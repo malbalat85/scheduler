@@ -29,20 +29,6 @@ Address.attachSchema(AddressSchema);
 if (Meteor.isServer) {
   Address.allow({
     insert: function (userId, doc) {
-      return false;
-    },
-
-    update: function (userId, doc, fieldNames, modifier) {
-      return false;
-    },
-
-    remove: function (userId, doc) {
-      return false;
-    }
-  });
-
-  Address.deny({
-    insert: function (userId, doc) {
       return true;
     },
 
@@ -54,4 +40,5 @@ if (Meteor.isServer) {
       return true;
     }
   });
+
 }

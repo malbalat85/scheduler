@@ -1,23 +1,23 @@
 /*****************************************************************************/
 /* CreateVisitmotive: Event Handlers */
 /*****************************************************************************/
-Template.CreateVisitmotive.events({
+Template.CreateVisitMotive.events({
 });
 
 /*****************************************************************************/
 /* CreateVisitmotive: Helpers */
 /*****************************************************************************/
-Template.CreateVisitmotive.helpers({
+Template.CreateVisitMotive.helpers({
 });
 
 /*****************************************************************************/
 /* CreateVisitmotive: Lifecycle Hooks */
 /*****************************************************************************/
-Template.CreateVisitmotive.onCreated(function () {
+Template.CreateVisitMotive.onCreated(function () {
 });
 
-Template.CreateVisitmotive.onRendered(function () {
+Template.CreateVisitMotive.onRendered(function () {
 });
 
-Template.CreateVisitmotive.onDestroyed(function () {
+Template.CreateVisitMotive.onDestroyed(function () {
 });

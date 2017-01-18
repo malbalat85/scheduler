@@ -1,0 +1,13 @@
+<template name="CreateVisit">
+  <div class="create-visit">
+    <legend>Add a Visit</legend>
+    {{#autoForm collection="Visit" id="insertVisitForm" type="insert"}}
+        {{> afQuickField name='createdAt'}}
+        {{> afQuickField name='attendedAt'}}
+        {{> afQuickField name='attendedBy'}}
+        {{> afQuickField name='motive' type='select-checkbox-inline' options=visitmotives}}
+        {{> afQuickField name='explanation' rows=6 }}
+      <button type="submit" class="btn btn-primary">Insert</button>
+    {{/autoForm}}
+  </div>
+</template>

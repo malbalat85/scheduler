@@ -1,0 +1,8 @@
+<template name="EditClient">
+  <div class="edit-client">
+    <h1>Edit client</h1>
+    {{> quickForm collection="Client" doc=this id="editClientForm"
+        type="update" buttonContent="Update"
+        fields="name,midname,lastname,email,phone,address" }}
+  </div>
+</template>

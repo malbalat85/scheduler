@@ -4,6 +4,8 @@ VisitmotiveSchema = new SimpleSchema({
   name: {
     type: String,
     label: "Name",
+    unique: true,
+    index: 1,
   },
   canexplain: {
     type: Boolean,

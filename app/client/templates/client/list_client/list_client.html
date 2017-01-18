@@ -1,0 +1,37 @@
+<template name="ListClients">
+  <div class="list-clients">
+    <h1>Client list</h1>
+    {{#linkTo route='createClient'}}<button class="btn btn-success pull-left" aria-hidden="true"><span class="glyphicon glyphicon-plus"></span> Create</button>{{/linkTo}}
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th class="visible-md visible-lg">Mid.</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th class="visible-md visible-lg">Phone</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each clients}}
+        {{> clientRow}}
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+</template>
+<!-- Client rows -->
+<template name="clientRow">
+  <tr class="clientRow">
+    <td>{{name}}</td>
+    <td class="visible-md visible-lg">{{midname}}</td>
+    <td>{{lastname}}</td>
+    <td>{{email}}</td>
+    <td class="visible-md visible-lg">{{phone}}</td>
+    <td class="text-right">
+      {{#linkTo route='editClient'}}<button class="btn btn-info" aria-hidden="true"><span class="glyphicon glyphicon-edit"></span></button>{{/linkTo}}
+      {{> quickRemoveButton collection="Client" beforeRemove=beforeRemove _id=this._id class="btn btn-danger"}}
+    </td>
+  </tr>
+</template>

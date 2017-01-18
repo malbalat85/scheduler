@@ -1,0 +1,28 @@
+<template name="ListVisitMotive">
+  <div class="list-visitmotive">
+    <h1>Vists motives</h1>
+    {{#linkTo route='createVisitMotive'}}<button class="btn btn-success pull-left" aria-hidden="true"><span class="glyphicon glyphicon-plus"></span> Create</button>{{/linkTo}}
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Can explain?</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each visitmotives}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{canexplain}}</td>
+          <td class="text-right">
+            {{#linkTo route='editVisitMotive'}}<button class="btn btn-info" aria-hidden="true"><span class="glyphicon glyphicon-edit"></span></button>{{/linkTo}}
+            {{> quickRemoveButton collection="Visitmotive" beforeRemove=beforeRemove _id=this._id class="btn btn-danger"}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+</template>

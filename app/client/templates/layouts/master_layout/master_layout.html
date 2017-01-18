@@ -1,3 +1,46 @@
 <template name="MasterLayout">
-  {{> yield}}
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Schedule App</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigationbar">
+        <ul class="nav navbar-nav navbar-right">
+          {{# if currentUser}}
+            <li>{{> loginButtons}}</li>
+            <li>{{#linkTo route="listQueue"}}Queue{{/linkTo}}</li>
+            <li>{{#linkTo route="listClients"}}Clients{{/linkTo}}</li>
+            <li>{{#linkTo route="listWorkers"}}Workers{{/linkTo}}</li>
+            <li>{{#linkTo route="listVisitMotive"}}Visits Motive{{/linkTo}}</li>
+          {{else}}
+            <li>{{#linkTo route="home"}}Login{{/linkTo}}</li>
+            <!-- Remove later -->
+              <li>{{> loginButtons}}</li>
+              <li>{{#linkTo route="createVisit"}}Queue{{/linkTo}}</li>
+              <li>{{#linkTo route="listClients"}}Clients{{/linkTo}}</li>
+              <li>{{#linkTo route="listWorkers"}}Workers{{/linkTo}}</li>
+              <li>{{#linkTo route="listVisitMotive"}}Visits Motive{{/linkTo}}</li>
+            <!-- Remove later -->
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {{> errors}}
+  <div class="container main-container">
+    {{> yield}}
+  </div>
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <ul class="nav navbar-nav navbar-right">
+        <li>Built with Meteor</li>
+      </ul>
+    </div>
+  </nav>
 </template>

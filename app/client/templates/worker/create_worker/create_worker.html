@@ -1,0 +1,14 @@
+<template name="CreateWorker">
+  <div class="create-worker">
+    <h1>Add a Worker</h1>
+    {{#autoForm schema='WorkerProfileSchema' id="insertWorkerForm" type="insert"}}
+        {{> afQuickField name='firstName' id="firstName"}}
+        {{> afQuickField name='lastName' id="lastName" }}
+        {{> afQuickField name='email' id="email" }}
+        {{> afQuickField name='password' label="Password" required=true id="password" type="password"}}
+        <label class=control-label>Roles</label>
+        {{> afFieldInput type='select-checkbox-inline' name='roles'}}
+        <button type="submit" id="addWorker" class="btn btn-primary">Add</button>
+    {{/autoForm}}
+  </div>
+</template>

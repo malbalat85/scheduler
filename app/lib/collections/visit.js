@@ -14,29 +14,30 @@ VisitSchema = new SimpleSchema({
               this.unset();
           }
       },
-      denyUpdate: true
+      denyUpdate: true,
   },
   attendedAt: {
     type: Date,
     label: "Attended at",
-    optional: true
+    optional: true,
   },
   motive: {
-    type: [VisitmotiveSchema],
-    label: "Reason/Motives"
+    type: [Object],
+    label: "Reason/Motives",
   },
   attendedBy: {
-    type: Object,
+    type: String,
     label: "Attended By",
-    optional: true
+    optional: true,
+    autoValue: function() {
+      if (this.userId)
+        return this.userId;
+    },
   },
-    explanation: {
+  explanation: {
     label: "Explain your motives",
     type: String,
     optional: true,
-    autoform: {
-			type: "hidden"
-		},
     custom: function () {
       var shouldBeRequired = this.field('motive.$.canexplain').value == 1;
 
@@ -60,20 +61,6 @@ Visit.attachSchema(VisitSchema);
 
 if (Meteor.isServer) {
   Visit.allow({
-    insert: function (userId, doc) {
-      return false;
-    },
-
-    update: function (userId, doc, fieldNames, modifier) {
-      return false;
-    },
-
-    remove: function (userId, doc) {
-      return false;
-    }
-  });
-
-  Visit.deny({
     insert: function (userId, doc) {
       return true;
     },

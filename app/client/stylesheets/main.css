@@ -3,3 +3,22 @@
 /*****************************************************************************/
 .main {
 }
+
+#login-buttons {
+  padding-top: 17px;
+  padding-bottom: 15px;
+  margin-right: 3.2px;
+}
+
+#login-buttons a {
+  color: #9d9d9d;
+}
+
+@media (max-width: 767px) {
+  #login-buttons {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    padding: 10px 15px;
+  }
+}

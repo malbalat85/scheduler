@@ -1,0 +1,35 @@
+<template name="ListClientVisits">
+  <div class="list-client-visits">
+    <h1>Client {{name}} {{lastname}} Visits</h1>
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Created At</th>
+        <th>Attended By</th>
+        <th>Attended At</th>
+        <th>Motives</th>
+        <th>Explanation</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each visits}}
+        <tr>
+          <td>{{formatDate createdAt}}</td>
+          <td>{{attendedBy}}</td>
+          <td>{{formatTimeStamp attendedAt}}</td>
+          <td>{{> listMotives motive=motive}}</td>
+          <td>{{explanation}}</td>
+          <td>{{#linkTo route='editVisit'}}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>{{/linkTo}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+</template>
+
+<template name="listMotives">
+  {{#each $mapped motive}}
+    {{name}}{{#unless $last}},{{/unless}}
+  {{/each}}
+</template>
