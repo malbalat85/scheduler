@@ -13,20 +13,17 @@
       <div class="collapse navbar-collapse" id="navigationbar">
         <ul class="nav navbar-nav navbar-right">
           {{# if currentUser}}
-            <li>{{> loginButtons}}</li>
-            <li>{{#linkTo route="listQueue"}}Queue{{/linkTo}}</li>
-            <li>{{#linkTo route="listClients"}}Clients{{/linkTo}}</li>
-            <li>{{#linkTo route="listWorkers"}}Workers{{/linkTo}}</li>
-            <li>{{#linkTo route="listVisitMotive"}}Visits Motive{{/linkTo}}</li>
+            <li>{{#linkTo route="createVisit"}}Create visit Admin{{/linkTo}}</li>
+            <li>
+              <a href="{{ pathFor 'createVisitHome'}}" class="hidden-xs">Create appointment Home</a>
+              <a class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" href="{{ pathFor 'createVisitHome'}}">Create Visit</a>                                          
+            </li>
           {{else}}
             <li>{{#linkTo route="home"}}Login{{/linkTo}}</li>
-            <!-- Remove later -->
-              <li>{{> loginButtons}}</li>
-              <li>{{#linkTo route="createVisit"}}Queue{{/linkTo}}</li>
-              <li>{{#linkTo route="listClients"}}Clients{{/linkTo}}</li>
-              <li>{{#linkTo route="listWorkers"}}Workers{{/linkTo}}</li>
-              <li>{{#linkTo route="listVisitMotive"}}Visits Motive{{/linkTo}}</li>
-            <!-- Remove later -->
+            <li>
+              <a href="{{ pathFor 'createVisitHome'}}" class="hidden-xs">Create appointment</a>
+              <a class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" href="{{ pathFor 'createVisitHome'}}">Create Visit</a>                                          
+            </li>
           {{/if}}
         </ul>
       </div>
@@ -39,7 +36,7 @@
   <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
       <ul class="nav navbar-nav navbar-right">
-        <li>Built with Meteor</li>
+        <li>Built with Meteor - 2017</li>
       </ul>
     </div>
   </nav>

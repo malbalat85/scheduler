@@ -1,4 +1,4 @@
-HomeController = RouteController.extend({
+AdminController = RouteController.extend({
   
   // A place to put your subscriptions
   // this.subscribe('items');
@@ -6,8 +6,6 @@ HomeController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
   
   subscriptions: function() {
-    this.subscribe('visitmotive').wait();
-    this.subscribe('visit').wait();
   },
   
   // Subscriptions or other things we want to "wait" on. This also
@@ -53,11 +51,5 @@ HomeController = RouteController.extend({
   onAfterAction: function () {
   },
   onStop: function () {
-  },
-  listAppointments: function () {  
-    this.render();
-  },
-  createAppointment: function () {  
-    this.render('AppointmentCreate');
   }
 });
