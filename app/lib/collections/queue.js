@@ -3,8 +3,12 @@ import './visit.js';
 Queue = new Mongo.Collection('queue');
 
 QueueSchema = new SimpleSchema({
+  name: {
+    type: String,
+    label: "Identification name"
+  },
   visits: {
-    type: [VisitSchema],
+    type: [String],
     optional: true
   },
   closeHour: {
@@ -14,6 +18,10 @@ QueueSchema = new SimpleSchema({
   openHour: {
     type: Date,
     label: "Open hour",
+  },
+  active: {
+    type: Boolean,
+    label: "Active"
   }
 });
 

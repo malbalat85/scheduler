@@ -29,4 +29,15 @@ Meteor.startup(function () {
       Visitmotive.insert(visitmotive);
     });
   }
+  console.log(moment({hour: 8}));
+  if(Queue.find({}).count() == 0){
+    //Create the first queue
+    queue = {
+      name: "Regular Costumers",
+      openHour: moment({hour: 8}).format(), //From 8am 
+      closeHour: moment({hour: 17}).format(), //To 5pm
+      active: true
+    };
+    Queue.insert(queue);
+  }
 });

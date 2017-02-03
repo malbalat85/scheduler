@@ -59,5 +59,9 @@ HomeController = RouteController.extend({
   },
   createAppointment: function () {  
     this.render('AppointmentCreate');
+  },
+  listAppointments: function() {
+    this.render('ListAppointments');
   }
+
 });

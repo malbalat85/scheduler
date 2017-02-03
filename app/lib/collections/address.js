@@ -1,10 +1,6 @@
 Address = new Mongo.Collection('address');
 
 AddressSchema = new SimpleSchema({
-  number: {
-    type: Number,
-    label: "Apt/House Number",
-  },
   street: {
     type: String,
     label: "Street name",

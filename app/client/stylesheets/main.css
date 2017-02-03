@@ -26,3 +26,8 @@
     padding: 10px 15px;
   }
 }
+
+.error {
+  color: rgba(255, 0, 0, 0.67);
+  margin-bottom: 0px;
+}

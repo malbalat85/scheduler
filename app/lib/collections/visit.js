@@ -22,7 +22,7 @@ VisitSchema = new SimpleSchema({
     optional: true,
   },
   motive: {
-    type: [Object],
+    type: [String],
     label: "Reason/Motives",
   },
   attendedBy: {
