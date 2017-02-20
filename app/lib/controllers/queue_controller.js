@@ -6,6 +6,9 @@ QueueController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
 
   subscriptions: function() {
+    this.subscribe('client');
+    this.subscribe('queue');
+    this.subscribe('visit');
   },
 
   // Subscriptions or other things we want to "wait" on. This also
@@ -53,7 +56,20 @@ QueueController = RouteController.extend({
   onStop: function () {
   },
   // Template actions
-  list: function(){
-    this.render('QueueClients', {});
+  /* List queues */
+  listQueues: function(){
+    this.render('ListQueue');
+  },
+  /** List queue's clients */
+  listQueueVisits: function(){
+    this.render('QueueClients');
+  },
+  /** Create a new queue */
+  createQueue: function(){
+    this.render();
+  },
+  /** Edit the queue properties */
+  editQueue: function(){
+    this.render();
   },
 });

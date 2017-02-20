@@ -26,12 +26,40 @@ Meteor.methods({
       Meteor.users.update({ '_id': workerId }, { $set: { 'profile': profile } });
     }
   },
-  scheduleVisit: (client, visit) => {
+  scheduleVisit: (client, visit, queue_id) => {
     /* Create client if not exist 
     *  else add a vist to the client and the queue 
     */
+
+    visit_number_suffix = "UN"
+
+    /** Todo: Refactor usign the callback
+     * Visit.insert(visit, function(error, result){
+     *  if (error) return error;
+     *  if (result) return result;
+     * });
+    */
+    /*
+    'John Cooper'.split(' ').map(function (s) { return s.charAt(0); }).join('');
+     */
+
+    queue = Queue.findOne({ _id: queue_id });
+    if (queue) {
+      if (queue.visits.length > 0) {
+        console.log(queue.visits.length);
+        //Gets a "N#" patter to number using queue initials
+        visit.number = queue.name.split(' ').map(function (s) { return s.charAt(0) }).join('') + (queue.visits.length + 1);
+      } else {
+        visit.number = visit_number_suffix + '1';
+      }
+    } else {
+      //If not queue just use default
+      visit.number = visit_number_suffix + '1';
+    }
+
     console.log(client);
     console.log(visit);
+    console.log(queue_id);
 
     //Create the visit first
     let new_visit = Visit.insert(visit);
@@ -69,6 +97,23 @@ Meteor.methods({
 
     //Set it at the active queue 
     //TODO: make this better, letting the client chooses the queue to insert the visit
-    Queue.update({active: true}, {$push: {visits: new_visit}});
+    Queue.update({ _id: queue_id, active: true }, { $push: { visits: new_visit } });
+  },
+  /** Activate | deactivate a queue */
+  activateQueue: function (queueId) {
+    check(queueId, String);
+    if (isAdmin()) {
+      //This is really a pain but you can't do this in Mongo
+      queueObj = Queue.findOne({ '_id': queueId }, { fields: { 'active': true } });
+      if (queueObj) {
+        return Queue.update({
+          '_id': queueId
+        }, {
+            $set: {
+              'active': !queueObj.active
+            }
+          });
+      }
+    }
   },
 });

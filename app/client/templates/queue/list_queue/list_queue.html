@@ -1,0 +1,39 @@
+<template name="ListQueue">
+  <div class="list-queue">
+    <h1>Queue list</h1>
+    {{#linkTo route='createQueue'}}<button class="btn btn-success pull-left" aria-hidden="true"><span class="glyphicon glyphicon-plus"></span> Create</button>{{/linkTo}}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th class="visible-md visible-lg">Open hour</th>
+          <th class="visible-md visible-lg">Close hour</th>
+          <th>Clients</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each queues}} 
+          {{> queueRow}}
+        {{else}}
+          <li class="placeholder">There are no items in this list.</li> 
+        {{/each}}          
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<!-- Queue rows -->
+<template name="queueRow">
+  <tr class="queueRow">
+    <td>{{name}}</td>
+    <td class="visible-md visible-lg">{{formatTimeStamp openHour}}</td>
+    <td class="visible-md visible-lg">{{formatTimeStamp closeHour}}</td>
+    <td>{{visitsCount visits}}</td>
+    <td class="text-right">
+      {{#linkTo route='editClient'}}<button class="btn btn-info" aria-hidden="true"><span class="glyphicon glyphicon-edit"></span></button>{{/linkTo}}
+      <button name="activate" value="{{this._id}}" class="btn btn-{{#if active}}success{{else}}danger{{/if}}" aria-hidden="true"><span class="glyphicon glyphicon-check"></span></button>
+      {{> quickRemoveButton collection="Queue" beforeRemove=beforeRemove _id=this._id class="btn btn-danger"}}
+    </td>
+  </tr>
+</template>

@@ -8,6 +8,7 @@ HomeController = RouteController.extend({
   subscriptions: function() {
     this.subscribe('visitmotive').wait();
     this.subscribe('visit').wait();
+    this.subscribe('queue').wait();
   },
   
   // Subscriptions or other things we want to "wait" on. This also
@@ -54,11 +55,9 @@ HomeController = RouteController.extend({
   },
   onStop: function () {
   },
-  listAppointments: function () {  
-    this.render();
-  },
-  createAppointment: function () {  
-    this.render('AppointmentCreate');
+  createAppointment: function() {
+    var queue_obj = Queue.findOne({_id: this.params.queue_id}); 
+    this.render('AppointmentCreate', {data: {queueObj: queue_obj}});
   },
   listAppointments: function() {
     this.render('ListAppointments');

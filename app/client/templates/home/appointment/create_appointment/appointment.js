@@ -32,7 +32,7 @@ Template.AppointmentCreate.helpers({
             return { label: vm.name, value: vm._id };
         });
     },
-    explain: function (motives_checkboxes) {
+    explain: function(motives_checkboxes) {
         $.each(motives_checkboxes, function (key, value) {
             var visitm_temp = Visitmotive.findOne({ _id: motive.value });
             if (visitm_temp.canexplain) {
@@ -160,12 +160,17 @@ Template.AppointmentCreate.onRendered(function () {
                 phone: template.find("[name='cell_phone']").value,
                 address: address,
             };
-            //Call the server inser visit method
-            Meteor.call('scheduleVisit', client, visit, function (error) {
-                if (error)
-                    throwError(error.message);
-                else
+
+            let queue_id = template.find("[name='queue_id']").value;
+            //Call the server insert visit method
+            Meteor.call('scheduleVisit', client, visit, queue_id, function (error) {
+                if (error){
+                    Bert.alert({title: 'Error', message: error.message, type: 'danger'});
+                }
+                else{
+                    Bert.alert('Visit scheduled', 'success'); 
                     Router.go('home');
+                }
             });
         }
     });

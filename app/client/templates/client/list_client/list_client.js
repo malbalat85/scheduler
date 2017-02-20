@@ -3,7 +3,6 @@
 /*****************************************************************************/
 Template.ListClients.events({
   'click .clientRow': function(e,t){
-    console.log(this._id);
     Router.go('listClientVisits', {_id: this._id});
    },
 });

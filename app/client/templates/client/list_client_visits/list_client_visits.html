@@ -1,9 +1,10 @@
 <template name="ListClientVisits">
   <div class="list-client-visits">
-    <h1>Client {{name}} {{lastname}} Visits</h1>
+    <h1>Client {{name}} {{lastname}} visits</h1>
     <table class="table table-hover">
     <thead>
       <tr>
+        <th>Number</th>
         <th>Created At</th>
         <th>Attended By</th>
         <th>Attended At</th>
@@ -13,10 +14,11 @@
       </tr>
     </thead>
     <tbody>
-      {{#each visits}}
+      {{#each visitsObj}}
         <tr>
+          <td><b>{{number}}</b></td>
           <td>{{formatDate createdAt}}</td>
-          <td>{{attendedBy}}</td>
+          <td>{{attendedByName attendedBy}}</td>
           <td>{{formatTimeStamp attendedAt}}</td>
           <td>{{> listMotives motive=motive}}</td>
           <td>{{explanation}}</td>

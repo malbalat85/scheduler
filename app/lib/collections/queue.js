@@ -9,7 +9,7 @@ QueueSchema = new SimpleSchema({
   },
   visits: {
     type: [String],
-    optional: true
+    optional: true,
   },
   closeHour: {
     type: Date,
@@ -38,7 +38,10 @@ if (Meteor.isServer) {
     },
 
     remove: function (userId, doc) {
-      return false;
+      if (!isAdmin())
+        return false;
+      else 
+        return true;
     }
   });
 

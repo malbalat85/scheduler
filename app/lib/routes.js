@@ -14,13 +14,13 @@ Router.onBeforeAction(function (e) {
 Router.route('/', {
   name: 'home',
   controller: 'HomeController',
-  action: 'listAppointments'
+  action: 'listAppointments',
 });
 
-Router.route('/visit/create', {
+Router.route('/queue/:queue_id/visit/create', {
   name: 'createVisitHome',
   controller: 'HomeController',
-  action: 'createAppointment'
+  action: 'createAppointment',
 });
 
 //Admin page
@@ -132,6 +132,24 @@ Router.route('admin/worker/:_id', {
 Router.route('admin/queue/', {
   name: 'listQueue',
   controller: 'QueueController',
-  action: 'list',
+  action: 'listQueues',
+  layoutTemplate: 'MasterAdminLayout',
+});
+Router.route('admin/queue/:_id/visits', {
+  name: 'listQueueVisits',
+  controller: 'QueueController',
+  action: 'listQueueVisits',
+  layoutTemplate: 'MasterAdminLayout',
+});
+Router.route('admin/queue/:_id', {
+  name: 'editQueue',
+  controller: 'QueueController',
+  action: 'editQueue',
+  layoutTemplate: 'MasterAdminLayout',
+});
+Router.route('admin/queue/create', {
+  name: 'createQueue',
+  controller: 'QueueController',
+  action: 'createQueue',
   layoutTemplate: 'MasterAdminLayout',
 });

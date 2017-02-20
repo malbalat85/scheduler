@@ -1,47 +1,24 @@
 <template name="ListAppointments">
-  {{> QueueItem}}
-</template>
-
-<template name="QueueItem">
   <section id="bs-pricing-six" class="bs-pricing-four roomy-50 bg-white fix">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-sm-10">
-          <div class="bs bs-pricing">
-            <div class="content">
-              <h3 class="category">Personal</h3>
-              <h1 class="bs-caption"><small>$</small>11</h1>
-              <ul>
-                <li><b>5 GB</b> Space</li>
-                <li><b>2 GB</b> RAM</li>
-                <li><b>24/7</b> Tech Support</li>
-                <li><b>Auto</b> Backup</li>
-                <li>Monthly Backups</li>
-                <li>8 CPU Core</li>
-              </ul>
-              <a href="#0" class="btn btn-danger">Buy Now</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-sm-10">
-          <div class="bs bs-pricing">
-            <div class="content">
-              <h3 class="category">Personal</h3>
-              <h1 class="bs-caption"><small>$</small>11</h1>
-              <ul>
-                <li><b>5 GB</b> Space</li>
-                <li><b>2 GB</b> RAM</li>
-                <li><b>24/7</b> Tech Support</li>
-                <li><b>Auto</b> Backup</li>
-                <li>Monthly Backups</li>
-                <li>8 CPU Core</li>
-              </ul>
-              <a href="#0" class="btn btn-danger">Buy Now</a>
-            </div>
-          </div>
-        </div>
+        {{#each queues}} {{> QueueItem}} {{/each}}
       </div>
     </div>
   </section>
+</template>
+
+<template name="QueueItem">
+  <div class="col-md-4 col-sm-10">
+    <div class="bs bs-pricing">
+      <div class="content">
+        <h3 class="category">{{name}}</h3>
+        <h1 class="bs-caption"><b>Attending</b> {{#if visits}}{{attendingVisits visits}}{{else}}0{{/if}}</h1>
+        <ul>
+          <li>Clients to attend: <b>{{#if visits}}{{visits.length}}{{else}}0{{/if}}</b></li>
+        </ul>
+        <a name="{{_id}}" class="btn btn-success {#if allowVisits _id}disabled{/if}">Get a ticket</a>
+      </div>
+    </div>
+  </div>
 </template>

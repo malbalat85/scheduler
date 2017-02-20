@@ -7,6 +7,8 @@ ClientController = RouteController.extend({
 
   subscriptions: function() {
     this.subscribe('client');
+    this.subscribe('visit');
+    this.subscribe('visitmotive');
   },
 
   // Subscriptions or other things we want to "wait" on. This also
@@ -65,10 +67,9 @@ ClientController = RouteController.extend({
   create: function () {
     this.render('CreateClient', {});
   },
-  // Render cloent visits
-  listClientVisits: function(clientId){
-    var client = Client.findOne({_id: clientId});
-    this.render('ListClientVisits', {client: client});
+  // Render client visits
+  listClientVisits: function(){
+    this.render('ListClientVisits');
   },
 
 });

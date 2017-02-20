@@ -3,6 +3,11 @@ import './visitmotive.js';
 Visit = new Mongo.Collection('visit');
 
 VisitSchema = new SimpleSchema({
+  number: {
+    type: String,
+    label: "Appointment number",
+    denyUpdate: true,
+  },
   createdAt: {
       type: Date,
       autoValue: function() {
@@ -16,9 +21,14 @@ VisitSchema = new SimpleSchema({
       },
       denyUpdate: true,
   },
-  attendedAt: {
+  startAttendedTime: {
     type: Date,
     label: "Attended at",
+    optional: true,
+  },
+  endAttendedTime: {
+    type: Date,
+    label: "Finished attended",
     optional: true,
   },
   motive: {

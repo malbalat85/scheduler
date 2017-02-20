@@ -1,43 +1,40 @@
 <template name="QueueClients">
-  <div class="queue-clients">
-    <h1>Queue</h1>
+  <div class="queue-clients-attended">
+    <h1>Visits to attend</h1>
     <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Position</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Arrived time</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each queueClients}}
-        {{> queueClientRow}}
-      {{/each}}
-    </tbody>
-  </table>
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Arrived time</th>
+          <th>Attended By</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each clientsAttended}} {{> queueClientAttendedRow}} {{/each}}
+      </tbody>
+    </table>
   </div>
   <div class="separator"> </div>
   <div class="queue-clients-attended">
     <h1>Clients attended</h1>
     <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Position</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Arrived time</th>
-        <th>Attended By</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each clientsAttended}}
-        {{> queueClientAttendedRow}}
-      {{/each}}
-    </tbody>
-  </table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Arrived time</th>
+          <th>Attended By</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each clientsAttended}} {{> queueClientAttendedRow}} {{/each}}
+      </tbody>
+    </table>
   </div>
 </template>
 
